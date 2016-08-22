@@ -1,11 +1,14 @@
 package zframe;
 
+import zframe.display.Display;
+
 public class MainApp {
     
     private String title;
     private int width, height;
     
     private Handler handler;
+    private Display display;
 
     public MainApp(String title, int width, int height) {
         this.title = title;
