@@ -19,6 +19,7 @@ public class MenuNorthItemMouseListener implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         handler.addLog(itemView.getlName().getText() + " Click");
+        handler.getContent().setState(itemView.getlName().getText());
     }
 
     @Override

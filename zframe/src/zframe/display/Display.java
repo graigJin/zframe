@@ -43,13 +43,11 @@ public class Display {
     }
     
     private void populateDisplay() {
-        wrapper.getWest().add(handler.getContent().getMenuWest().getView());
         wrapper.getEast().add(handler.getContent().getLogger().getView());
         wrapper.getNorth().add(handler.getContent().getMenuNorth().getView());
         wrapper.getSouth().add(handler.getContent().getMenuSouth().getView());
-        
+        wrapper.getWest().add(handler.getContent().getCurrentState().getMenuWest().getView());
         frame.add(wrapper);
-        
         frame.setJMenuBar(handler.getContent().getMainMenuBar());
     }
 
