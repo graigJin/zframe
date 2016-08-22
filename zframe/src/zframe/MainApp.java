@@ -22,6 +22,7 @@ public class MainApp {
     
     private void initComponents() {
         handler = new Handler(this);
+        display = new Display(handler, title, width, height);
     }
 
 }
