@@ -1,7 +1,11 @@
 package zframe.content;
 
 import zframe.Handler;
-import zframe.display.State;
+import zframe.states.DocState;
+import zframe.states.HomeState;
+import zframe.states.LogState;
+import zframe.states.State;
+import zframe.states.TodoState;
 import zframe.ui.logger.Logger;
 import zframe.ui.mainmenubar.MainMenuBar;
 import zframe.ui.menunorth.MenuNorth;
@@ -33,10 +37,10 @@ public class ContentManager {
         menuNorth = new MenuNorth(handler);
         menuSouth = new MenuSouth(handler);
         
-        homeState = new State(handler, homeCategories);
-        todoState = new State(handler, todoCategories);
-        logState = new State(handler, logCategories);
-        docState = new State(handler, docCategories);
+        homeState = new HomeState(handler, homeCategories);
+        todoState = new TodoState(handler, todoCategories);
+        logState = new LogState(handler, logCategories);
+        docState = new DocState(handler, docCategories);
         
         currentState = homeState;
     }

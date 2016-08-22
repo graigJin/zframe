@@ -1,23 +1,23 @@
-package zframe.display; 
+package zframe.states; 
 
 import zframe.Handler;
 import zframe.ui.menuwest.MenuWest;
 
-public class State { 
-    
-    private Handler handler;
-    private MenuWest menuWest;
-    private String[] westCategories;
+public class LogState extends State { 
 
-    public State(Handler handler, String[] westCategories) {
+    private Handler handler;
+    private String[] categories;
+    private MenuWest menuWest;
+
+    public LogState(Handler handler, String[] categories) {
+        super(handler);
         this.handler = handler;
-        this.westCategories = westCategories;
+        this.categories = categories;
         initComponents();
     }
     
     private void initComponents() {
-        if (westCategories != null)
-            menuWest = new MenuWest(handler, westCategories);
+        menuWest = new MenuWest(handler, categories);
     }
 
     public MenuWest getMenuWest() {
