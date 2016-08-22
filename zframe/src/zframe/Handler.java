@@ -1,5 +1,7 @@
 package zframe;
 
+import zframe.content.ContentManager;
+
 public class Handler {
     
     private MainApp main;
@@ -10,6 +12,10 @@ public class Handler {
 
     public MainApp getMain() {
         return main;
+    }
+    
+    public ContentManager getContent() {
+        return main.getContent();
     }
 
 }
