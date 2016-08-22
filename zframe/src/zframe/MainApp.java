@@ -18,11 +18,16 @@ public class MainApp {
     
     public void init() {
         initComponents();
+        initDisplay();
     }
     
     private void initComponents() {
         handler = new Handler(this);
         display = new Display(handler, title, width, height);
+    }
+    
+    private void initDisplay() {
+        display.init();
     }
 
 }
