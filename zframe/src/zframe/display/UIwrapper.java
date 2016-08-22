@@ -1,5 +1,6 @@
 package zframe.display;
 
+import javax.swing.JPanel;
 import zframe.Handler;
 
 public class UIwrapper extends javax.swing.JPanel {
@@ -73,5 +74,25 @@ public class UIwrapper extends javax.swing.JPanel {
     private javax.swing.JPanel South;
     private javax.swing.JPanel West;
     // End of variables declaration//GEN-END:variables
+
+    public JPanel getCenter() {
+        return Center;
+    }
+
+    public JPanel getEast() {
+        return East;
+    }
+
+    public JPanel getNorth() {
+        return North;
+    }
+
+    public JPanel getSouth() {
+        return South;
+    }
+
+    public JPanel getWest() {
+        return West;
+    }
 
 }

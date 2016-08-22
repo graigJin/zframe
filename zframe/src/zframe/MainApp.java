@@ -20,7 +20,8 @@ public class MainApp {
     
     public void init() {
         initComponents();
-        initDisplay();
+        initSubComponents();
+        initView();
     }
     
     private void initComponents() {
@@ -29,7 +30,11 @@ public class MainApp {
         content = new ContentManager(handler);
     }
     
-    private void initDisplay() {
+    private void initSubComponents() {
+        content.init();
+    }
+    
+    private void initView() {
         display.init();
     }
 

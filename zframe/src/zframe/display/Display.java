@@ -40,6 +40,9 @@ public class Display {
     private void populateDisplay() {
         wrapper = new UIwrapper(handler);
         
+        wrapper.getWest().add(handler.getContent().getMenuWest().getView());
+        wrapper.getEast().add(handler.getContent().getLogger().getView());
+        
         frame.add(wrapper);
         
         frame.setJMenuBar(handler.getContent().getMainMenuBar());
