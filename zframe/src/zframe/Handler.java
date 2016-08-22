@@ -3,6 +3,7 @@ package zframe;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import zframe.content.ContentManager;
+import zframe.display.Display;
 
 public class Handler {
     
@@ -18,6 +19,10 @@ public class Handler {
     
     public ContentManager getContent() {
         return main.getContent();
+    }
+    
+    public Display getDisplay() {
+        return main.getDisplay();
     }
     
     public void addLog(String text) {

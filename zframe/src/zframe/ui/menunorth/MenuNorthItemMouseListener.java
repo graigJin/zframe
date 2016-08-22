@@ -1,4 +1,4 @@
-package zframe.ui.menuwest;
+package zframe.ui.menunorth;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -6,12 +6,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import zframe.Handler;
 
-public class MenuWestItemMouseListener implements MouseListener {
+public class MenuNorthItemMouseListener implements MouseListener {
     
     private Handler handler;
     private MenuItemView itemView;
 
-    public MenuWestItemMouseListener(Handler handler, MenuItemView itemView) {
+    public MenuNorthItemMouseListener(Handler handler, MenuItemView itemView) {
         this.handler = handler;
         this.itemView = itemView;
     }

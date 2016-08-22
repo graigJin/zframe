@@ -3,6 +3,8 @@ package zframe.content;
 import zframe.Handler;
 import zframe.ui.logger.Logger;
 import zframe.ui.mainmenubar.MainMenuBar;
+import zframe.ui.menunorth.MenuNorth;
+import zframe.ui.menusouth.MenuSouth;
 import zframe.ui.menuwest.MenuWest;
 
 public class ContentManager {
@@ -12,6 +14,8 @@ public class ContentManager {
     private MainMenuBar mainMenuBar;
     private MenuWest menuWest;
     private Logger logger;
+    private MenuNorth menuNorth;
+    private MenuSouth menuSouth;
 
     public ContentManager(Handler handler) {
         this.handler = handler;
@@ -19,9 +23,13 @@ public class ContentManager {
     }
     
     public void init() {
-        mainMenuBar = new MainMenuBar(handler);
-        menuWest = new MenuWest(handler);
         logger = new Logger(handler);
+        
+        mainMenuBar = new MainMenuBar(handler);
+        
+        menuWest = new MenuWest(handler);
+        menuNorth = new MenuNorth(handler);
+        menuSouth = new MenuSouth(handler);
     }
 
     public MainMenuBar getMainMenuBar() {
@@ -34,6 +42,14 @@ public class ContentManager {
 
     public Logger getLogger() {
         return logger;
+    }
+
+    public MenuNorth getMenuNorth() {
+        return menuNorth;
+    }
+
+    public MenuSouth getMenuSouth() {
+        return menuSouth;
     }
 
 }

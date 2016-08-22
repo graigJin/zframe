@@ -19,6 +19,7 @@ public class Display {
         this.title = title;
         this.width = width;
         this.height = height;
+        initComponents();
     }
     
     public void init() {
@@ -26,8 +27,12 @@ public class Display {
         populateDisplay();
     }
     
-    private void createDisplay() {
+    private void initComponents() {
         frame = new JFrame(title);
+        wrapper = new UIwrapper(handler);
+    }
+    
+    private void createDisplay() {
         frame.setSize(new Dimension(width, height));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -38,14 +43,18 @@ public class Display {
     }
     
     private void populateDisplay() {
-        wrapper = new UIwrapper(handler);
-        
         wrapper.getWest().add(handler.getContent().getMenuWest().getView());
         wrapper.getEast().add(handler.getContent().getLogger().getView());
+        wrapper.getNorth().add(handler.getContent().getMenuNorth().getView());
+        wrapper.getSouth().add(handler.getContent().getMenuSouth().getView());
         
         frame.add(wrapper);
         
         frame.setJMenuBar(handler.getContent().getMainMenuBar());
+    }
+
+    public UIwrapper getWrapper() {
+        return wrapper;
     }
 
 }
