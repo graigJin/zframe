@@ -19,7 +19,7 @@ public class NewTodoMouseListener implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        view.getList().addTodo();
+        new CreateTodo(handler, "CREATE NEW TO DO", 600, 600, view.getList()).init();
     }
 
     @Override

@@ -26,7 +26,7 @@ public class TodoList {
     }
     
     private void initView() {
-        fm.readMapFromFile("data/todo/todomap.tdm", " ", todoMap);
+        fm.readMapFromFile("data/todo/todomap.tdm", ";", todoMap);
         todoCount = getCurrentCount();
         
         for (Todo t : todoMap.values()) {
@@ -45,8 +45,8 @@ public class TodoList {
         return todoCount;
     }
     
-    public void addTodo() {
-        Todo t = new Todo(handler, this, ++todoCount, 0, "NEW", "TODO", "NOW", "THEN");
+    public void addTodo(int prio, String[] data) {
+        Todo t = new Todo(handler, this, ++todoCount, prio, data[0], data[1], data[2], data[3]);
         t.initView();
         todoMap.put(todoCount, t);
         view.getpTodoList().add(t.getView());

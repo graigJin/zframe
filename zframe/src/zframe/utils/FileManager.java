@@ -31,11 +31,11 @@ public class FileManager {
         }
         for (Todo t : map.values()) {
             
-            writer.print(t.getReference() + " ");
-            writer.print(t.getPrio() + " ");
-            writer.print(t.getResort() + " ");
-            writer.print(t.getTask() + " ");
-            writer.print(t.getStart() + " ");
+            writer.print(t.getReference() + ";");
+            writer.print(t.getPrio() + ";");
+            writer.print(t.getResort() + ";");
+            writer.print(t.getTask() + ";");
+            writer.print(t.getStart() + ";");
             writer.print(t.getEnd() + "\n");
             
         }
