@@ -6,6 +6,8 @@ public class MenuNorth {
     
     private Handler handler;
     private MenuNorthView view;
+    
+    private final String[] northCategories = { "HOME", "TO DO" , "LOG" , "DOC" };
 
     public MenuNorth(Handler handler) {
         this.handler = handler;
@@ -15,8 +17,8 @@ public class MenuNorth {
     private void initComponents() {
         view = new MenuNorthView(handler);
         
-        for (int i = 0; i < 5; i++) {
-            MenuItem m = new MenuItem(handler, "Item " + i);
+        for (String s : northCategories) {
+            MenuItem m = new MenuItem(handler, s);
             view.getContent().add(m.getView());
         }
     }
