@@ -13,6 +13,7 @@ public abstract class State {
     
     public abstract MenuWest getMenuWest();
     
+    public abstract <T> T getContentView();
+        
 } 
-
 

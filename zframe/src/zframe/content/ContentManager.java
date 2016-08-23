@@ -1,5 +1,6 @@
 package zframe.content;
 
+import java.awt.Component;
 import zframe.Handler;
 import zframe.states.DocState;
 import zframe.states.HomeState;
@@ -23,7 +24,6 @@ public class ContentManager {
     private State homeState, todoState, logState, docState, currentState;
     
     private String[] homeCategories = { "HOME" };
-    private String[] todoCategories = { "TO DO" };
     private String[] logCategories = { "LOG" };
     private String[] docCategories = { "DOC" };
 
@@ -38,11 +38,11 @@ public class ContentManager {
         menuSouth = new MenuSouth(handler);
         
         homeState = new HomeState(handler, homeCategories);
-        todoState = new TodoState(handler, todoCategories);
+        todoState = new TodoState(handler);
         logState = new LogState(handler, logCategories);
         docState = new DocState(handler, docCategories);
         
-        currentState = homeState;
+        setState("HOME");
     }
     
     public void setState(String newState) {
@@ -62,7 +62,12 @@ public class ContentManager {
         }
         handler.getDisplay().getWrapper().getWest().removeAll();
         handler.getDisplay().getWrapper().getWest().add(currentState.getMenuWest().getView());
-        handler.getDisplay().getWrapper().getWest().updateUI();
+        
+        Component c = currentState.getContentView();
+        handler.getDisplay().getWrapper().getCenter().removeAll();
+        handler.getDisplay().getWrapper().getCenter().add(c);
+        
+        handler.getDisplay().getWrapper().updateUI();
     }
 
     public MainMenuBar getMainMenuBar() {
@@ -83,6 +88,10 @@ public class ContentManager {
 
     public State getCurrentState() {
         return currentState;
+    }
+
+    public State getTodoState() {
+        return todoState;
     }
 
 }

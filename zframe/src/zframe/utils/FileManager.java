@@ -1,5 +1,6 @@
 package zframe.utils;
 
+import java.awt.Component;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -8,29 +9,40 @@ import java.io.PrintWriter;
 import java.util.Map;
 import java.util.StringTokenizer;
 import zframe.Handler;
+import zframe.ui.todolist.Todo;
+import zframe.ui.todolist.TodoList;
 
 public class FileManager {
     
     private Handler handler;
-
-    public FileManager(Handler handler) {
+    private Object parent;
+    
+    public FileManager(Handler handler, Object parent) {
         this.handler = handler;
+        this.parent = parent;
     }
     
-    private void writeMapToFile(String path, Map<Integer,?> map) {
+    public void writeMapToFile(String path, Map<Integer,Todo> map) {
         PrintWriter writer = null;
         try {
             writer = new PrintWriter(path);
         } catch (FileNotFoundException ex) {
             handler.addLog("FileNotFoundException");
         }
-        for (int i : map.keySet()) {
-            writer.println("Line " + i);
+        for (Todo t : map.values()) {
+            
+            writer.print(t.getReference() + ";");
+            writer.print(t.getPrio() + ";");
+            writer.print(t.getResort() + ";");
+            writer.print(t.getTask() + ";");
+            writer.print(t.getStart() + ";");
+            writer.print(t.getEnd() + "\n");
+            
         }
         writer.close();
     }
     
-    private void readMapFromFile(String path, String delimiter, Map<Integer,String> map) {
+    public void readMapFromFile(String path, String delimiter, Map<Integer,Todo> map) {
         BufferedReader br = null;
         String sLine = "";
         StringTokenizer st = null;
@@ -47,7 +59,8 @@ public class FileManager {
             while((sLine = br.readLine()) != null) {
                 String[] splits = sLine.split(delimiter, -1);
                 
-                map.put(contentCount++, sLine);
+                Todo t = new Todo(handler, (TodoList) parent, Integer.valueOf(splits[0]), Integer.valueOf(splits[1]), splits[2], splits[3], splits[4], splits[5]);
+                map.put(contentCount++, t);
                 
             }
         } catch (IOException ex) {
