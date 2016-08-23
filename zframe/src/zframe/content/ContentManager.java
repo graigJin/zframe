@@ -11,7 +11,6 @@ import zframe.ui.logger.Logger;
 import zframe.ui.mainmenubar.MainMenuBar;
 import zframe.ui.menunorth.MenuNorth;
 import zframe.ui.menusouth.MenuSouth;
-import zframe.ui.todolist.TodoList;
 
 public class ContentManager {
     
