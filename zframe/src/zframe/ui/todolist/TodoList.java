@@ -1,7 +1,9 @@
 package zframe.ui.todolist;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import zframe.Handler;
+import zframe.states.TodoState;
 import zframe.utils.FileManager;
 
 public class TodoList {
@@ -10,11 +12,13 @@ public class TodoList {
     private TodoListView view;
     private int todoCount;
     private FileManager fm;
+    private TodoState state;
     
     private HashMap<Integer, Todo> todoMap;
 
-    public TodoList(Handler handler) {
+    public TodoList(Handler handler, TodoState state) {
         this.handler = handler;
+        this.state = state;
         initComponents();
         initView();
     }
@@ -52,6 +56,7 @@ public class TodoList {
         view.getpTodoList().add(t.getView());
         view.getpTodoList().updateUI();
         fm.writeMapToFile("data/todo/todomap.tdm", todoMap);
+        state.getMenuWest().updateCategories(getResorts());
     }
     
     public void removeTodo(Todo t) {
@@ -59,10 +64,26 @@ public class TodoList {
         view.getpTodoList().remove(t.getView());
         view.getpTodoList().updateUI();
         fm.writeMapToFile("data/todo/todomap.tdm", todoMap);
+        state.getMenuWest().updateCategories(getResorts());
+    }
+    
+    private String[] getResorts() {
+        ArrayList<String> temp = new ArrayList<>();
+        for (Todo t : todoMap.values()) {
+            if (!temp.contains(t.getResort())) {
+                temp.add(t.getResort());
+            }
+        }
+        String[] resorts = temp.stream().toArray(String[]::new);
+        return resorts;
     }
 
     public TodoListView getView() {
         return view;
+    }
+
+    public HashMap<Integer, Todo> getTodoMap() {
+        return todoMap;
     }
     
 }

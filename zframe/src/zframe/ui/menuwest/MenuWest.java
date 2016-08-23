@@ -17,11 +17,16 @@ public class MenuWest {
     
     private void initComponents() {
         view = new MenuWestView(handler);
-        
+        updateCategories(this.westCategories);
+    }
+    
+    public void updateCategories(String[] westCategories) {
+        view.getContent().removeAll();
         for (String s : westCategories) {
             MenuItem m = new MenuItem(handler, s);
             view.getContent().add(m.getView());
         }
+        view.getContent().updateUI();
     }
 
     public MenuWestView getView() {
