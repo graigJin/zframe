@@ -17,7 +17,8 @@ public class TodoMouseListener implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        todo.getList().removeTodo(todo);
+        //todo.getList().removeTodo(todo);
+        todo.getView().toggleSize();
     }
 
     @Override

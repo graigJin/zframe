@@ -191,7 +191,8 @@ public class CreateToDoView extends javax.swing.JPanel {
             tfResort.getText() ,  
             tfTask.getText() , 
             tfStart.getText() , 
-            tfEnd.getText()
+            tfEnd.getText() ,
+            taDesc.getText()
         };
         list.addTodo(cbPrio.getSelectedIndex(), data);
         frame.dispose();

@@ -50,7 +50,7 @@ public class TodoList {
     }
     
     public void addTodo(int prio, String[] data) {
-        Todo t = new Todo(handler, this, ++todoCount, prio, data[0], data[1], data[2], data[3]);
+        Todo t = new Todo(handler, this, ++todoCount, prio, data[0], data[1], data[2], data[3], data[4]);
         t.initView();
         todoMap.put(todoCount, t);
         view.getpTodoList().add(t.getView());
@@ -84,6 +84,10 @@ public class TodoList {
 
     public HashMap<Integer, Todo> getTodoMap() {
         return todoMap;
+    }
+
+    public FileManager getFm() {
+        return fm;
     }
     
 }

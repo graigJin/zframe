@@ -37,10 +37,12 @@ public class TodoState extends State {
         return cat;
     }
 
+    @Override
     public MenuWest getMenuWest() {
         return menuWest;
     }
 
+    @Override
     public TodoListView getContentView() {
         return list.getView();
     }

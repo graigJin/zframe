@@ -6,11 +6,11 @@ public class Todo {
     
     private Handler handler;
     private int reference, prio;
-    private String resort, task, start, end;
+    private String resort, task, start, end, description;
     private TodoView view;
     private TodoList list;
 
-    public Todo(Handler handler, TodoList list, int reference, int prio, String resort, String task, String start, String end) {
+    public Todo(Handler handler, TodoList list, int reference, int prio, String resort, String task, String start, String end, String description) {
         this.handler = handler;
         this.list = list;
         this.reference = reference;
@@ -19,10 +19,11 @@ public class Todo {
         this.task = task;
         this.start = start;
         this.end = end;
+        this.description = description;
     }
     
     public void initView() {
-        view = new TodoView(handler);
+        view = new TodoView(handler, this);
         view.addMouseListener(new TodoMouseListener(handler, this));
         
         view.getlReference().setText(String.valueOf(reference));
@@ -31,6 +32,11 @@ public class Todo {
         view.getlTask().setText(task);
         view.getlStart().setText(start);
         view.getlEnd().setText(end);
+        view.getTaDesc().setText(description);
+    }
+    
+    public void updateDesciption(String text) {
+        description = text;
     }
 
     public TodoView getView() {
@@ -63,6 +69,10 @@ public class Todo {
 
     public TodoList getList() {
         return list;
+    }
+
+    public String getDescription() {
+        return description;
     }
     
 }

@@ -1,6 +1,5 @@
 package zframe.utils;
 
-import java.awt.Component;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -36,7 +35,9 @@ public class FileManager {
             writer.print(t.getResort() + ";");
             writer.print(t.getTask() + ";");
             writer.print(t.getStart() + ";");
-            writer.print(t.getEnd() + "\n");
+            writer.print(t.getEnd() + ";");
+            String d = t.getDescription().replaceAll("\n", "!nlc!");
+            writer.print(d + "\n");
             
         }
         writer.close();
@@ -59,7 +60,9 @@ public class FileManager {
             while((sLine = br.readLine()) != null) {
                 String[] splits = sLine.split(delimiter, -1);
                 
-                Todo t = new Todo(handler, (TodoList) parent, Integer.valueOf(splits[0]), Integer.valueOf(splits[1]), splits[2], splits[3], splits[4], splits[5]);
+                splits[6] = splits[6].replaceAll("!nlc!", "\n");
+                
+                Todo t = new Todo(handler, (TodoList) parent, Integer.valueOf(splits[0]), Integer.valueOf(splits[1]), splits[2], splits[3], splits[4], splits[5], splits[6]);
                 map.put(contentCount++, t);
                 
             }

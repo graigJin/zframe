@@ -1,10 +1,13 @@
 package zframe.display;
 
 import java.awt.Dimension;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import javax.swing.JFrame;
 import zframe.Handler;
+import zframe.states.TodoState;
 
-public class Display {
+public class Display implements WindowListener {
     
     private Handler handler;
     
@@ -34,6 +37,7 @@ public class Display {
     
     private void createDisplay() {
         frame.setSize(new Dimension(width, height));
+        frame.addWindowListener(this);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setFocusable(true);
@@ -53,6 +57,42 @@ public class Display {
 
     public UIwrapper getWrapper() {
         return wrapper;
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+        // IGNORE
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        TodoState t = (TodoState) handler.getContent().getTodoState();
+        t.getList().getFm().writeMapToFile("data/todo/todomap.tdm", t.getList().getTodoMap());
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+        // IGNORE
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+        // IGNORE
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+        // IGNORE
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+        // IGNORE
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+        // IGNORE
     }
 
 }
